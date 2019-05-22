@@ -8,6 +8,8 @@ import hadeel.com.bakingapp.Model.Ingredients;
 import hadeel.com.bakingapp.Model.Recipe;
 import hadeel.com.bakingapp.Model.Steps;
 import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import java.io.Serializable;
@@ -24,6 +26,9 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+
+
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();

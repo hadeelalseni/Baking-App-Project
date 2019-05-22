@@ -7,6 +7,13 @@
 
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/homeBtn"
+        android:textSize="20sp"
+        android:text="Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <fragment
         android:id="@+id/fragmentMain"
         android:name="hadeel.com.bakingapp.MainFragment"
