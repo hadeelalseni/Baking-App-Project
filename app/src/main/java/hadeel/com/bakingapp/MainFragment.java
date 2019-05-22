@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,15 +27,11 @@ import retrofit2.Response;
 
 
 public class MainFragment extends Fragment {
-
-
     private ArrayAdapter<Recipe> adapterItems;
     private ListView lvItems;
     private RecyclerView rv;
     private List<Recipe> recipes = new ArrayList<>();
     private MainAdapter mainAdapter;
-
-    //private OnFragmentInteractionListener mListener;
 
     public MainFragment() {
         // Required empty public constructor
@@ -53,12 +50,10 @@ public class MainFragment extends Fragment {
                 container, false);
 
         rv = view.findViewById(R.id.main_rv);
-        rv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         mainAdapter = new MainAdapter(getContext(), (ArrayList<Recipe>) recipes);
         rv.setAdapter(mainAdapter);
         mainAdapter.notifyDataSetChanged();
-
-
 
         getRecipes();
         return view;
@@ -81,27 +76,9 @@ public class MainFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Recipe>> call, Throwable t) {
-
                 System.out.println("Error in RecipeFragmant.java onFailure method."+t);
             }
         });
 
     }
-/*    private OnListItemSelectedListener listener;
-
-    public interface OnListItemSelectedListener {
-        public void onItemSelected(Recipe recipe);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (activity instanceof OnListItemSelectedListener) {
-            listener = (OnListItemSelectedListener) activity;
-        } else {
-            throw new ClassCastException(
-                    activity.toString()
-                            + " must implement ItemsListFragment.OnListItemSelectedListener");
-        }
-    }*/
 }

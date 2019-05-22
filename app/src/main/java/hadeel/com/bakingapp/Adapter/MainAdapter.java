@@ -42,26 +42,24 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.ViewHolder viewHolder, int i) {
-        //final String[] ingText = {null};
         final Recipe recipe = recipes.get(i);
         viewHolder.recipeBtn.setText(recipe.getName());
         viewHolder.recipeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("On clickeeed.");
+                System.out.println("MainAdapter On clickeeed.");
                 Intent intent = new Intent(context, DetailActivity.class);
                 StringBuffer stringBuffer = new StringBuffer();
                 for(Ingredients ing : recipe.getIngredients()){
                     stringBuffer.append(ing.getIngredient() + " - "
                             + ing.getQuantity() +" of: "+ ing.getMeasure()+"\n");
                 }
-
                 System.out.println("in MainAdapter.java: "+ stringBuffer.toString());
 
                 List<Steps> steps = recipe.getSteps();
                 intent.putExtra("Recipe", recipe);
-                intent.putExtra("Ingrediants",stringBuffer.toString());
-                intent.putExtra("Steps",  (Serializable) steps);
+                //intent.putExtra("Ingrediants",stringBuffer.toString());
+                //intent.putExtra("Steps",  (Serializable) steps);
                 context.startActivity(intent);
             }
         });

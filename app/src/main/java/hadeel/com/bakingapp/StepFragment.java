@@ -44,6 +44,8 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class StepFragment extends Fragment {
     private Steps step;
     private SimpleExoPlayer exoPlayer;
@@ -149,7 +151,6 @@ public class StepFragment extends Fragment {
     }
 
     public static StepFragment newInstance(Steps step) {
-        System.out.println("StepFragment.java: "+step.getShortDescription());
         StepFragment stepFragment= new StepFragment();
         Bundle args = new Bundle();
         args.putSerializable("oneStep", step);

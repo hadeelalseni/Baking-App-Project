@@ -21,14 +21,12 @@ import hadeel.com.bakingapp.Model.Ingredients;
 import hadeel.com.bakingapp.Model.Recipe;
 import hadeel.com.bakingapp.Model.Steps;
 
-
 public class DetailFragment extends Fragment {
-
-//    private OnFragmentInteractionListener mListener;
     private Recipe recipe;
     private TextView recipeName, ingrediants;
     private RecyclerView rv;
     private DetailAdapter detailAdapter;
+
     public DetailFragment() {
         // Required empty public constructor
     }
@@ -64,7 +62,6 @@ public class DetailFragment extends Fragment {
     }
 
     public static DetailFragment newInstance(Recipe recipe) {
-        System.out.println("DetailFragment.java: "+recipe.getName());
         DetailFragment detailFragment= new DetailFragment();
         Bundle args = new Bundle();
         args.putSerializable("Recipe", recipe);
