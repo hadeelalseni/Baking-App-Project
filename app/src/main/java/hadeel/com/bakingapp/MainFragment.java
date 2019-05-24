@@ -49,8 +49,17 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main,
                 container, false);
 
+        CheckMode checkMode = new CheckMode();
+        boolean isPhone = checkMode.isPhone(getContext());
+
+
         rv = view.findViewById(R.id.main_rv);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if(isPhone){
+            rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }else{
+            rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
+        }
+
         mainAdapter = new MainAdapter(getContext(), (ArrayList<Recipe>) recipes);
         rv.setAdapter(mainAdapter);
         mainAdapter.notifyDataSetChanged();

@@ -33,8 +33,6 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
 
-
-
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         Recipe recipe = (Recipe) getIntent().getSerializableExtra("Recipe");
