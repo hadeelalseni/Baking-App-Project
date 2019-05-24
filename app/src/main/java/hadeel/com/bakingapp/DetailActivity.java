@@ -1,5 +1,7 @@
 package hadeel.com.bakingapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +9,8 @@ import android.os.Bundle;
 import hadeel.com.bakingapp.Model.Ingredients;
 import hadeel.com.bakingapp.Model.Recipe;
 import hadeel.com.bakingapp.Model.Steps;
+import hadeel.com.bakingapp.Widget.WidgetInfo;
+
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +19,7 @@ import android.widget.FrameLayout;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -37,6 +42,12 @@ public class DetailActivity extends AppCompatActivity {
         List<Steps> steps = recipe.getSteps();
         List<Ingredients> ingredients = recipe.getIngredients();
 
+/*
+        SharedPreferences sharedPreferences = getSharedPreferences(WidgetInfo.WIDGET_INGREDIEMNTS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(WidgetInfo.RECIPE_STRING, ingredients.toString());
+        editor.apply();
+*/
         CheckMode checkMode = new CheckMode();
         final boolean isPhone = checkMode.isPhone(this);
 

@@ -3,6 +3,7 @@ package hadeel.com.bakingapp;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -17,6 +18,8 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;*/
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
@@ -25,10 +28,10 @@ import static org.junit.Assert.*;
 public class MyTest {
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
-    @Test
+    /*@Test
     public void test1(){
         onView(withId(R.id.homeBtn)).perform(click());
-    }
+    }*/
     //@Rule
     //public ActivityTestRule<DetailActivity> activityTestRule2 = new ActivityTestRule<>(DetailActivity.class);
     @Before
@@ -55,6 +58,9 @@ public class MyTest {
     }
     @Test
     public void userCanClickOnRecipeBtn(){
-        onView(withId(R.id.main_btn)).perform(click());
+
+        //onView(withId(R.id.main_btn)).perform(click());
+        onView(withId(R.id.ingrediants_tv)).check(matches(isDisplayed()));
+        Espresso.pressBack();
     }
 }

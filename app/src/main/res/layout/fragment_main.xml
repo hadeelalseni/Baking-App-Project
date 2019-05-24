@@ -5,18 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment">
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </android.support.v7.widget.RecyclerView>
-    <ListView
-        android:id="@+id/main_lv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
-    </ListView>
 
+
+    </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

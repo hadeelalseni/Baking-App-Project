@@ -1,6 +1,7 @@
 package hadeel.com.bakingapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,9 @@ import hadeel.com.bakingapp.Adapter.MainAdapter;
 import hadeel.com.bakingapp.Model.Ingredients;
 import hadeel.com.bakingapp.Model.Recipe;
 import hadeel.com.bakingapp.Model.Steps;
+import hadeel.com.bakingapp.Widget.WidgetInfo;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class DetailFragment extends Fragment {
     private Recipe recipe;
@@ -50,6 +54,13 @@ public class DetailFragment extends Fragment {
         }
         ingrediants = view.findViewById(R.id.ingrediants_tv);
         ingrediants.setText(stringBuffer.toString());
+
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(WidgetInfo.WIDGET_INGREDIEMNTS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(WidgetInfo.WIDGET_ING_STRING, stringBuffer.toString());
+        editor.apply();
+
+
 
         List<Steps> stepsList = recipe.getSteps();
         rv = view.findViewById(R.id.steps_rv);
