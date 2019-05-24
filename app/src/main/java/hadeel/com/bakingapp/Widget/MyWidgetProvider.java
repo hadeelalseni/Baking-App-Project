@@ -14,18 +14,6 @@ import hadeel.com.bakingapp.R;
 import static hadeel.com.bakingapp.Widget.WidgetInfo.*;
 
 public class MyWidgetProvider extends AppWidgetProvider {
-    static void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId){
-
-        String widgetTxt = "bla bla bla";
-        SharedPreferences sharedPreferences = context.getSharedPreferences(WidgetInfo.WIDGET_INGREDIEMNTS, context.MODE_PRIVATE);
-        widgetTxt = sharedPreferences.getString(WidgetInfo.WIDGET_ING_STRING , widgetTxt);
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.my_widget);
-        views.setTextViewText(R.id.widget_tv, widgetTxt);
-        Intent intent = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context,0,intent,0);
-        views.setOnClickPendingIntent(R.id.widget_tv, pendingIntent);
-        appWidgetManager.updateAppWidget(appWidgetId, views);
-    }
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for(int widget : appWidgetIds){
@@ -36,7 +24,16 @@ public class MyWidgetProvider extends AppWidgetProvider {
             views.setOnClickPendingIntent(R.id.my_widget_btn, pendingIntent);
 
             appWidgetManager.updateAppWidget(widget, views);*/
-            updateWidget(context, appWidgetManager, widget);
+            String widgetTxt = "bla bla bla";
+            SharedPreferences sharedPreferences = context.getSharedPreferences(WidgetInfo.WIDGET_INGREDIEMNTS, context.MODE_PRIVATE);
+            widgetTxt = sharedPreferences.getString(WidgetInfo.WIDGET_ING_STRING , widgetTxt);
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.my_widget);
+            views.setTextViewText(R.id.widget_tv, widgetTxt);
+            Intent intent = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context,0,intent,0);
+            views.setOnClickPendingIntent(R.id.widget_tv, pendingIntent);
+            appWidgetManager.updateAppWidget(widget, views);
+
         }
     }
 }
